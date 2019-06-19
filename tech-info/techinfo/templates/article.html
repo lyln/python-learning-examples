@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+        <p> </p>
+        <div class="jumbotron">
+            <h2 class="display-5">{{ article['title'] }}</h2>
+            <hr class="my-4">
+            <p>{{ article['contents'] | safe }}</p>
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" href="#" role="button">回到顶部</a>
+            </p>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

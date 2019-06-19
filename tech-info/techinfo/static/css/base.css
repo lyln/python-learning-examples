@@ -1,0 +1,12 @@
+
+.item-content {
+    display: flex;
+    padding: .4rem 1.25rem .4rem .4rem;
+    margin-bottom: .8rem;
+    background-color: #fff;
+    border-radius: 2px;
+}
+
+.body image {
+    max-width: 800px;
+}

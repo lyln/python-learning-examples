@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <p></p>
+            <div class="list-group">
+                {% for article in article_lists %}
+                    {#               <a href="{{ article.url }}" class="list-group-item list-group-item-action item-content">#}
+                    <a href="/article?url={{ article.url }}"
+                       class="list-group-item list-group-item-action item-content">
+                        {{ article.title }}
+                    </a>
+                {% endfor %}
+            </div>
+            <p></p>
+            <div>
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="/?offset=0">首页</a>
+                    </li>
+                    <li class="page-item ">
+                        <a class="page-link" href="/?offset=20">1</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="/?offset=40">2</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="/?offset=60">3</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="/?offset=80">4</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="/?offset=100">5</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">尾页</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
