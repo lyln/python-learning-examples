@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- content -->
+<script src="{{ url_for('static', filename='js/dml_rules.js') }}"></script>
+<div class="col-sm-9 main">
+    <a href="/add_rules" class="btn btn-primary">添加自定义规则</a>
+    <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+            <th>编号ID</th>
+            <th>内容名称</th>
+            <th>地址</th>
+            <th>回复类型</th>
+            <th>图片地址</th>
+            <th>内容描述</th>
+            <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for m_item in m_items %}
+        <tr>
+            <td>{{ m_item.m_id }}</td>
+            <td>{{ m_item.m_title }}</td>
+            <td>{{ m_item.m_url }}</td>
+            <td>{{ m_item.m_type }}</td>
+            <td>{{ m_item.m_image }}</td>
+            <td>{{ m_item.m_desc }}</td>
+            <td>
+                <a href="/modify_rules?m_id={{ m_item.m_id }}" class="btn btn-warning btn-warning-modify">修改</a>
+            </td>
+            <td>
+                <a href="#" class="btn btn-danger btn-danger-delete" m_id="{{ m_item.m_id }}">删除</a>
+            </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+            <ul class="pagination">
+
+{#      <li class="active"><a href="#">1</a>#}
+{#      </li>#}
+
+      <li>
+      {% if pagination.has_prev %}
+        <a href="/?page={{ pagination.prev_num }}">&laquo;</a>
+      {% endif %}
+      </li>
+{##}
+{#      {% for i in range(total): %}#}
+{#          <li><a href="/?page={{ i+1 }}">{{ i+1 }}</a> </li>#}
+{#      {% endfor %}#}
+{##}
+
+      {% for i in pagination.iter_pages(left_edge=1,left_current=4,right_current=4,right_edge=1)  %}
+          {% if i %}
+            <li><a href="/?page={{ i }}">{{ i }}</a> </li>
+          {% else %}
+            <li class="disabled"><a href="#">...</a></li>
+          {% endif %}
+
+      {% endfor %}
+
+      <li>
+      {% if pagination.has_next %}
+        <a href="/?page={{ pagination.next_num }}">&raquo;</a>
+      {% endif %}
+      </li>
+
+
+
+
+    </ul>
+    </div>
+    </div>
+
+{% endblock %}

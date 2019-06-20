@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>m3u8在线播放器|m3u8 player|m3u8 file playlist|m3u8播放器网页版|m3u8播放器手机版</title>
+<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/DPlayer.min.css') }}" >
+
+<script src="{{ url_for('static', filename='js/DPlayer.min.js') }}"></script>
+
+<!--[if lt IE 9]>
+<script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+<div class="container">
+<div class="row">
+<div class="col-xs-12">
+<div class="banner">
+<h1><a href="/"></a> <span class="ft16 mob hidden-xs">m3u8在线播放器 m3u8 player support both PC and Mobile</span></h1>
+</div>
+<form action="/play" method="GET">
+<div class="input-group">
+<span class="input-group-addon hidden-xs" id="basic-addon1">.m3u8 URL</span>
+<input type="text" class="form-control" value="https://video-dev.github.io/streams/x36xhzz/x36xhzz.m3u8" name="play" required>
+<span class="input-group-btn">
+<button type="button" name="remove" class="btn btn-default"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+<button class="btn btn-primary play" name="play" type="submit"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> PLAY</button>
+</span>
+</div><!-- /input-group -->
+</form>
+<div class="text-center">
+
+<div id="dplayer">Dplayer</div>
+<!--<video id="video" controls="controls" autoplay="autoplay" poster="http://freefrontend.com/assets/img/css-loaders/cube-flipping-loader.gif"></video>-->
+</div>
+
+</div>
+</div>
+</div>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<script>
+
+const dp = new DPlayer({
+    container: document.getElementById('dplayer'),
+    live: true,
+    danmaku: true,
+    apiBackend: {
+        read: function (endpoint, callback) {
+            console.log('Pretend to connect WebSocket');
+            callback();
+        },
+        send: function (endpoint, danmakuData, callback) {
+            console.log('Pretend to send danamku via WebSocket', danmakuData);
+            callback();
+        }
+    },
+    video: {
+//        url: 'http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/gear2/prog_index.m3u8',
+        url: '{{ play_url }}',
+        type: 'hls'
+    }
+});
+</script>
+</body>
+</html>

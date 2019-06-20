@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<title>登陆</title>
+	<link rel="stylesheet" href="{{ url_for('auth.static', filename='css/login.css') }}">
+</head>
+<body style="background-image:url({{ background_image }})">
+{% block content %}
+{% endblock %}
+
+
+<script src="{{ url_for('auth.static', filename='js/login.js') }}"></script>
+</body>
+</html>

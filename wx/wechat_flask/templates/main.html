@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- content -->
+<div class="col-sm-9 main">
+    <a href="/wx/addrules" class="btn btn-primary">添加自定义规则</a>
+    <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+            <th>编号ID</th>
+            <th>内容名称</th>
+            <th>地址</th>
+            <th>回复类型</th>
+            <th>图片地址</th>
+            <th>内容描述</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for m_item in m_items %}
+        <tr>
+          <td>{{ m_item.m_id }}</td>
+          <td>{{ m_item.m_title }}</td>
+          <td>{{ m_item.m_url }}</td>
+          <td>{{ m_item.m_type }}</td>
+          <td>{{ m_item.m_image }}</td>
+          <td>{{ m_item.m_desc }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    </div>
+    </div>
+
+{% endblock %}
