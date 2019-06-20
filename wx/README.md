@@ -16,5 +16,5 @@ wx.sql导入是替换
 
 
 ## 功能预览
-![ 登录](images/login.jpg)
-![管理界面](images/admin.jpg)
+![ 登录](wechat_flask/images/login.jpg)
+![管理界面](wechat_flask/images/admin.jpg)
