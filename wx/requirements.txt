@@ -5,4 +5,4 @@ Flask-Login==0.4.0
 MySQL-python==1.2.5
 wechatpy==1.4.1
 pycrypto==2.6.1
-Werkzeug==0.12.1
+Werkzeug==0.15.3
